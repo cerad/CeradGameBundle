@@ -85,13 +85,16 @@ services:
  
 # ==========================================================
 # Action stuff
-    cerad_game__project_games__game_schedule_list_controller:
-        class: Cerad\Bundle\GameBundle\Controller\ProjectGames\GameSchedule\GameScheduleListController
+    cerad_game__project_games__game_schedule__list_controller:
+        class: Cerad\Bundle\GameBundle\Action\ProjectGames\GameSchedule\GameScheduleListController
         calls:
-             - [setContainer, ['@service_container']]
+             - [setRouter,     ['@router']]
+             - [setTemplating, ['@templating']]
              
-    cerad_game__project_games__game_schedule_list_model:
-        class: Cerad\Bundle\GameBundle\Controller\ProjectGames\GameSchedule\GameScheduleListModel
+    cerad_game__project_games__game_schedule__list_model:
+        class: Cerad\Bundle\GameBundle\Action\ProjectGames\GameSchedule\GameScheduleListModel
+        arguments: 
+            - '@cerad_game__game_repository'
 
 # ===========================================================
 # Convert classes

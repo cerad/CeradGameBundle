@@ -1,11 +1,11 @@
 <?php
 namespace Cerad\Bundle\GameBundle\EntityRepository;
 
-//  Cerad\Bundle\GameBundle\Entity\Level as LevelEntity;
+use Cerad\Bundle\CoreBundle\Doctrine\EntityRepository;
 
 use Cerad\Library\Doctrine\AbstractRepository;
 
-class LevelRepository extends AbstractRepository
+class LevelRepository extends EntityRepository
 {   
     public function createLevel($params = null) { return $this->createEntity($params); }
     

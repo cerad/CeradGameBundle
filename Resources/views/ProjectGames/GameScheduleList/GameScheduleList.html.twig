@@ -17,7 +17,7 @@
     </thead>
     <tbody>
         {% for game in games %}
-        {% set level = cerad_level_find(game.levelKey) %}
+        {# set level = cerad_level_find(game.levelKey) #}
         <tr id="ref-sched-{{game.num}}" class="game-status-{{game.status}}">
             <td class="schedule-game">
                 {% if 0 %}
@@ -32,10 +32,7 @@
             <td class="schedule-dow" >{{ game.dtBeg.format('D'    ) }}</td>
             <td class="schedule-time">{{ game.dtBeg.format('g:i A') }}</td>    
             <td>{{ game.fieldName }}</td>
-            <td>{{ level.domain   }}<br />{{ level.domainSub }}</td>
-            <td>{{ level.name     }}
-                {# if game_is_section_match(game) %}<br /><span class="game-no-tie">SM - No Tie</span>{% endif #}
-            </td>
+            <td>{{ game.levelKey  }}</td>
            <td><table>
                 {% for gameTeam in game.teams %}
                     <tr>
