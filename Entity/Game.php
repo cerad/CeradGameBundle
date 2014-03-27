@@ -118,6 +118,8 @@ class Game
     /* =======================================
      * Person stuff
      */
+    public function createGameOfficial($params = null) { return new GameOfficial($params); }
+    
     public function getOfficials($sort = true) 
     { 
         if (!$sort) return $this->officials;

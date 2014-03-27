@@ -44,6 +44,9 @@ services:
             
     cerad_game.game_repository:
         alias: cerad_game.game_repository.doctrine
+        
+    cerad_game__game_repository:
+        alias: cerad_game.game_repository.doctrine
 
 # ============================================
 # Misc
@@ -94,4 +97,9 @@ services:
 # Convert classes
     cerad_game__convert__les_to_yaml:
         class: Cerad\Bundle\GameBundle\Schedule\Convert\ConvertLesToYaml
+        
+    cerad_game__schedule_load:
+        class: Cerad\Bundle\GameBundle\Schedule\Load\LoadGames
+        arguments: 
+            - '@cerad_game__game_repository'
         

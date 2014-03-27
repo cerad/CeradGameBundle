@@ -89,6 +89,8 @@ class ConvertLesToYaml extends BaseLoader
             'awayTeamName'  => $awayTeam,
             
             'projectKey' => 'USSF_AL_HFCClassic_Spring2014',
+            
+            'slots' => $this->levels[$level]['slots'],
         );
         
         $this->items[] = $game;
@@ -97,6 +99,19 @@ class ConvertLesToYaml extends BaseLoader
         
       //print_r($game); die("\n");
     }
+    protected $levels = array
+    (
+        'U09 Boys Gold'   => array('slots' => 1),
+        'U09 Boys Silver' => array('slots' => 1),
+        'U09 Girls'       => array('slots' => 1),
+        'U10 Boys 6v6'    => array('slots' => 1),
+        'U10 Girls 8v8'   => array('slots' => 3),
+        'U11 Girls'       => array('slots' => 3),
+        'U12 Boys 8v8'    => array('slots' => 3),
+        'U12 Girls 8v8'   => array('slots' => 3),
+        'U13 Boys'        => array('slots' => 3),
+        'U13 Girls'       => array('slots' => 3),
+    );
     protected $sites = array
     (
         'Merrimack 1a Big North #M01N'   => 'Merrimack, MM01N',  
