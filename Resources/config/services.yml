@@ -90,4 +90,8 @@ services:
     cerad_game__project_games__game_schedule_list_model:
         class: Cerad\Bundle\GameBundle\Controller\ProjectGames\GameSchedule\GameScheduleListModel
 
-            
+# ===========================================================
+# Convert classes
+    cerad_game__convert__les_to_yaml:
+        class: Cerad\Bundle\GameBundle\Schedule\Convert\ConvertLesToYaml
+        
