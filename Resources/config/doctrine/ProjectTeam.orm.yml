@@ -1,0 +1,56 @@
+Cerad\Bundle\GameBundle\Entity\ProjectTeam:
+    type:  entity
+    table: project_teams
+    uniqueConstraints:
+       game_team_game_slot_index:
+           columns: projectKey, levelKey, name
+
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+      
+    fields:
+            
+        projectKey:
+            column:   projectKey
+            type:     string
+            length:   80
+            nullable: false
+            
+        levelKey:
+            column:   levelKey
+            type:     string
+            length:   80
+            nullable: false
+            
+        role:
+            column:   role
+            type:     string
+            length:   20
+            nullable: false
+            
+        name:
+            column:   name
+            type:     string
+            length:   80
+            nullable: false
+                        
+                
+        groupKey:
+            column:   groupKey
+            type:     string
+            length:   40
+            nullable: true
+                        
+        link:
+            column:   link
+            type:     integer
+            nullable: true
+            
+        status:
+            column:   status
+            type:     string
+            length:   20
+            nullable: true
+

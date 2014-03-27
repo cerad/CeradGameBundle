@@ -1,0 +1,11 @@
+{# @CeradGame/GameSchedule/Import/GameScheduleImportIndex.html.twig #}
+{% extends '@CeradGame/Layout.html.twig' %}
+
+{% block content %}
+{{ form_start(form) }}
+{{ form_row(form.attachment) }}
+{{ form_row(form.import) }}
+{{ form_rest(form) }}
+{{ form_end(form)  }}
+{{ results | nl2br }}
+{% endblock %}

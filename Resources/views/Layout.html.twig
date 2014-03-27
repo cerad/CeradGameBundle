@@ -1,0 +1,30 @@
+{# @CeradGame/Layout.html.twig #}
+{% extends '@CeradGame/Base.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% stylesheets 
+     output='/arbiter/schedule/css/cerad.css'
+    '@CeradGameBundle/Resources/public/css/reset.css'
+    '@CeradGameBundle/Resources/public/css/basic.css'
+    '@CeradGameBundle/Resources/public/css/games.css'
+%}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+{%endblock %} 
+
+
+{% block layout_body %}
+<div id="layout-body">
+
+{# block layout_userinfo %}
+<div id="layout-userinfo">
+    {% render(controller('CeradTournsBundle:Tourns/TournsUserInfo:render')) %}
+</div>
+{% endblock #}
+    
+<div id="layout-content">{% block content %}{% endblock %}</div>
+
+</div>
+{% endblock %} {# end body block #}
+

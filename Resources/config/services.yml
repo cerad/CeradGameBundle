@@ -1,0 +1,93 @@
+services:
+
+# =============================================================
+# PDO - Just for grins
+    pdo:
+        class: PDO
+        arguments:
+            dsn:      '%database_dsn%'      # mysql:dbname=appgames
+            user:     '%database_user%'
+            password: '%database_password%'
+        calls:
+            - [setAttribute, [ 3, 2]] # \PDO::ATTR_ERRMODE,           \PDO::ERRMODE_EXCEPTION
+            - [setAttribute, [19, 2]] # \PDO::ATTR_DEFAULT_FETCH_MODE \PDO::FETCH_ASSOC
+            - [setAttribute, [20, 0]] # \PDO::ATTR_EMULATE_PREPARES
+
+# =============================================================
+# Level stuff
+
+    cerad_level.entity_manager.doctrine:
+        alias: doctrine.orm.default_entity_manager
+        
+    cerad_level.level_repository.doctrine:
+        class:  Cerad\Bundle\GameBundle\Entity\LevelRepository
+        factory_service: 'cerad_level.entity_manager.doctrine'
+        factory_method:  'getRepository'
+        arguments:  
+            - 'Cerad\Bundle\GameBundle\Entity\Level'
+            
+    cerad_level.level_repository:
+        alias: cerad_level.level_repository.doctrine
+        
+# =============================================================
+# Game stuff
+
+    cerad_game.entity_manager.doctrine:
+        alias: doctrine.orm.default_entity_manager
+
+    cerad_game.game_repository.doctrine:
+        class:  Cerad\Bundle\GameBundle\Entity\GameRepository
+        factory_service: 'cerad_game.entity_manager.doctrine'
+        factory_method:  'getRepository'
+        arguments:  
+            - 'Cerad\Bundle\GameBundle\Entity\Game'
+            
+    cerad_game.game_repository:
+        alias: cerad_game.game_repository.doctrine
+
+# ============================================
+# Misc
+    cerad_game.schedule_ArbiterGamesWithSlots.import:
+        class: Cerad\Bundle\GameBundle\Schedule\Import\ArbiterGamesWithSlotsImport
+        arguments:
+            - '@cerad_project__project_repository'
+            - '@cerad_level.level_repository'
+            - '@cerad_game.game_repository'
+            
+    cerad_game.schedule_ArbiterGamesWithSlots.import_pdo:
+        class: Cerad\Bundle\GameBundle\Schedule\Import\ArbiterGamesWithSlotsImportPDO
+        arguments:
+            - '@cerad_game.schedule_ArbiterGames.import_pdo_helper'
+            
+    cerad_game.schedule_ArbiterGames.import_pdo_helper:
+        class: Cerad\Bundle\GameBundle\Schedule\Import\ArbiterGamesImportHelper
+        arguments:
+            - '@pdo'
+            
+    cerad_game.twig_extension:
+        class:  Cerad\Bundle\GameBundle\TwigExtension\GameExtension
+        arguments:  
+            - '@cerad_level.level_repository'
+        tags:
+            - { name: twig.extension }
+
+    cerad_game.game_schedule_search.form_type:
+        class: Cerad\Bundle\GameBundle\FormType\GameScheduleSearchFormType
+        arguments: 
+            - '@cerad_project__project_repository'
+            - '@cerad_level.level_repository'
+            - '@cerad_game.game_repository'
+        tags:
+            - { name: form.type, alias: game_schedule_search }
+ 
+# ==========================================================
+# Action stuff
+    cerad_game__project_games__game_schedule_list_controller:
+        class: Cerad\Bundle\GameBundle\Controller\ProjectGames\GameSchedule\GameScheduleListController
+        calls:
+             - [setContainer, ['@service_container']]
+             
+    cerad_game__project_games__game_schedule_list_model:
+        class: Cerad\Bundle\GameBundle\Controller\ProjectGames\GameSchedule\GameScheduleListModel
+
+            

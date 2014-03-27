@@ -1,0 +1,55 @@
+<div class="schedule-games-list">
+    <table id="schedule" class="schedule-games-list">
+    <thead>
+        <tr><th colspan="20">Game Schedule - Count: {{ games | length }}</th></tr>
+        <tr>
+            <th class="schedule-game"  >Game</th>
+            <th class="schedule-status">Status</th>
+            <th class="schedule-date"  >Date</th>
+            <th class="schedule-dow"   >DOW</th>
+            <th class="schedule-time"  >Time</th>
+            <th class="schedule-field" >Field</th>
+            <th class="schedule-group" >Group</th>
+            <th class="schedule-level" >Level</th>
+            <th class="schedule-teams" >Home / Away Teams</th>
+            <th class="schedule-officials-summary">Officials</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for game in games %}
+        {% set level = cerad_level_find(game.levelKey) %}
+        <tr id="ref-sched-{{game.num}}" class="game-status-{{game.status}}">
+            <td class="schedule-game">
+                {% if 0 %}
+                <a href="{{ path('zayso_core_schedule_game_edit', { 'id': game.id })}}">{{ game.getNum() }}</a>
+                {% else %}
+                {{ game.num }}
+                {% endif %}
+            </td>
+            <td class="schedule-status"><span class="game-status-{{game.status}}">{{ game.status     }}</span></td>
+            
+            <td class="schedule-date">{{ game.dtBeg.format('Y-m-d') }}</td>
+            <td class="schedule-dow" >{{ game.dtBeg.format('D'    ) }}</td>
+            <td class="schedule-time">{{ game.dtBeg.format('g:i A') }}</td>    
+            <td>{{ game.fieldName }}</td>
+            <td>{{ level.domain   }}<br />{{ level.domainSub }}</td>
+            <td>{{ level.name     }}
+                {# if game_is_section_match(game) %}<br /><span class="game-no-tie">SM - No Tie</span>{% endif #}
+            </td>
+           <td><table>
+                {% for gameTeam in game.teams %}
+                    <tr>
+                        <td>{{ cerad_game_score(gameTeam.score) }}</td>
+                        <td>{{ gameTeam.name }}</td>
+                    </tr>
+                {% endfor %}
+            </table></td>
+            {% set summary = cerad_game_officials_summary(game) %}
+            <td class="schedule-officials-summary">
+                <span class="official-summary-{{ summary }}">{{ summary }}</span>
+            </td>
+       </tr>
+        {% endfor %}{# games #}
+    </tbody>
+    </table>
+</div>

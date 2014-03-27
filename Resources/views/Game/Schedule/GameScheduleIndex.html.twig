@@ -1,0 +1,11 @@
+{% extends '@CeradGame/Layout.html.twig' %}
+
+{% block content %}
+<p>
+    Schedule and scores are updated daily around 7:00 AM.
+    Officials: O=Open Slot, A=Assigned
+</p>
+{% include '@CeradGame/Game/Schedule/GameScheduleSearch.html.twig' %}
+{% include '@CeradGame/Game/Schedule/GameScheduleList.html.twig'   %}
+
+{% endblock %}

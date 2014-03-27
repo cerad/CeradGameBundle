@@ -1,0 +1,73 @@
+Cerad\Bundle\GameBundle\Entity\Level:
+    type:  entity
+    table: levels
+    repositoryClass: Cerad\Bundle\GameBundle\EntityRepository\LevelRepository
+    
+    indexes:
+       level_sport_index:
+           columns: sport
+       level_domain_index:
+           columns: domain
+       level_domain_sub_index:
+           columns: domainSub
+        
+    id:
+        key:
+            column: id
+            type:   string
+            length: 80
+            generator: { strategy: NONE }
+    
+    fields:
+        name:
+            column:   name
+            type:     string
+            length:   40
+            nullable: false
+            
+        age:
+            column:   age
+            type:     string
+            length:   20
+            nullable: true
+            
+        gender:
+            column:   gender
+            type:     string
+            length:   20
+            nullable: true
+            
+        program:
+            column:   program
+            type:     string
+            length:   20
+            nullable: true
+            
+        link:
+            column:   link
+            type:     integer
+            nullable: true
+            
+        sport:
+            column:   sport
+            type:     string
+            length:   20
+            nullable: false
+            
+        domain:
+            column:   domain
+            type:     string
+            length:   20
+            nullable: false
+            
+        domainSub:
+            column:   domainSub
+            type:     string
+            length:   40
+            nullable: false
+            
+        status:
+            column:   status
+            type:     string
+            length:   20
+            nullable: true

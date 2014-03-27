@@ -1,0 +1,17 @@
+cerad_game__project_game_schedule__list:
+    path:  /project/{projectSlug}/game-schedule
+    defaults: 
+        _controller: cerad_game__project_games__game_schedule_list_controller:listAction
+        _model:      cerad_game__project_games__game_schedule_list_model
+        _template: '@CeradGame\ProjectGames\GameScheduleList\GameScheduleIndex.html.twig'
+
+cerad_game_schedule:
+    path:  /
+    defaults: 
+        _controller: CeradGameBundle:GameSchedule:index
+        _template: '@CeradGame\Game\Schedule\GameScheduleIndex.html.twig'
+    
+cerad_game_schedule_import:
+    path:  /import
+    defaults: { _controller: CeradGameBundle:GameScheduleImport:import }
+  

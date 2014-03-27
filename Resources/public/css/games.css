@@ -1,0 +1,50 @@
+
+span.game-status-Normal   { }
+span.game-status-Canceled { color: white; background-color: red; }
+
+span.official-summary-A-A,
+span.official-summary-A-A-A,
+span.official-summary-A-A-A-A
+{ 
+    color: #00CC00; font-weight: bold; 
+}
+
+table.schedule-games-list
+{
+   /*max-width: 1000px; */
+    width: 1000px;
+    border: 2px solid black;
+    border-collapse: collapse;
+    
+}
+table.schedule-games-list th,
+table.schedule-games-list td
+{
+    border: 2px solid black;
+}
+table.schedule-games-list table td { border: none }
+
+/* Schedule table widths */
+th.schedule-game              { width:  60px; text-align: center; }
+th.schedule-status            { width:  65px; text-align: center; }
+th.schedule-date              { width:  80px; }
+th.schedule-dow               { width:  40px; text-align: center; }
+th.schedule-time              { width:  65px; }
+th.schedule-field             { width: 200px; }
+th.schedule-group             { width: 100px; }
+th.schedule-level             { width:  50px; }
+th.schedule-teams             { width: 200px; }
+th.schedule-officials-summary { width:  70px; text-align: center; }
+  
+td.schedule-game              { text-align: center; }
+td.schedule-status            { text-align: center; }
+td.schedule-date              { text-align: center; }
+td.schedule-dow               { text-align: center; }
+td.schedule-time              { text-align: right;  }
+td.schedule-field             { text-align: left;   }
+td.schedule-group             { text-align: left;   }
+td.schedule-level             { text-align: left;   }
+td.schedule-teams             { text-align: left;   }
+td.schedule-officials-summary { text-align: center; }
+
+
