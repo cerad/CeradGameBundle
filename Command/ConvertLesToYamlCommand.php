@@ -24,18 +24,20 @@ class ConvertLesToYamlCommand extends ContainerAwareCommand
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $base = 'data/Classic20140327';
+        $base = 'data/Classic20140328';
         
         $convert = $this->getService('cerad_game__convert__les_to_yaml');
         
-        $games = $convert->load($base . '.xlsx');
+        $games = $convert->load($base . 'Les.xlsx');
         
         echo sprintf("Games: %d\n",count($games));
         
-        file_put_contents($base . '.yml',Yaml::dump($games,10));
+        file_put_contents($base . 'Les.yml',Yaml::dump($games,10));
         
-        $import = $this->getService('cerad_game__schedule_load');
-        $import->process($games);
+      //$import = $this->getService('cerad_game__schedule_load');
+      //$import->process($games);
+        $arbiterImport = $this->getService('cerad_game__convert__yaml_to_arbiter_import');
+        $arbiterImport->save($base . 'Les.csv',$games);
         
         return; if($input); if($output);
     }

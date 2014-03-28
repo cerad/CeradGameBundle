@@ -29,6 +29,7 @@ class ConvertLesToYaml extends BaseLoader
     protected function processItem($item)
     {
         $num = $item['num'] + 6000;
+        if ($num == 6000) return;
         
         $date    = $this->excel->processDate($item['date']);
         $timeBeg = $this->excel->processTime($item['timeBeg']);
