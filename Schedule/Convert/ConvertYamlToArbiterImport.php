@@ -20,9 +20,10 @@ class ConvertYamlToArbiterImport
             $date = trim($parts[0]);
             $time = trim($parts[1]);
             
-            $projectKey = $game['projectKey'];
-            $sport = null;
+            $projectKey = $sport = $game['projectKey'];
+          
             if (strpos($projectKey,'HFCClassic')) $sport = 'HFC Classic';
+            if (strpos($projectKey,'OpenCup') !== false) $sport = 'Open Cup';
             
             $data = array
             (
