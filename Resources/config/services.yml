@@ -104,8 +104,14 @@ services:
     cerad_game__convert__pss_to_yaml:
         class: Cerad\Bundle\GameBundle\Schedule\Convert\ConvertPssToYaml
         
+    cerad_game__convert__arb_to_yaml:
+        class: Cerad\Bundle\GameBundle\Schedule\Convert\ConvertArbToYaml
+        
     cerad_game__convert__yaml_to_arbiter_import:
         class: Cerad\Bundle\GameBundle\Schedule\Convert\ConvertYamlToArbiterImport
+        
+    cerad_game__convert__yaml_to_officials:
+        class: Cerad\Bundle\GameBundle\Schedule\Convert\ConvertYamlToOfficials
         
     cerad_game__schedule_load:
         class: Cerad\Bundle\GameBundle\Schedule\Load\LoadGames
