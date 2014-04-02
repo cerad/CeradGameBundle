@@ -24,8 +24,9 @@ class ConvertPssToYamlCommand extends ContainerAwareCommand
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $base = 'OpenCupPss20140329';
-        $shared = 'C:\\Users\\ahundiak\\Google Drive\\arbiter\\OpenCup\\';
+        $base = 'OpenCupPss20140401';
+      //$shared = 'C:\\Users\\ahundiak\\Google Drive\\arbiter\\OpenCup\\';
+        $shared = 'data/';
         
         $convert = $this->getService('cerad_game__convert__pss_to_yaml');
         
@@ -35,8 +36,8 @@ class ConvertPssToYamlCommand extends ContainerAwareCommand
         
         file_put_contents('data/' . $base . '.yml',Yaml::dump($games,10));
         
-        $import = $this->getService('cerad_game__schedule_load');
-        $import->process($games);
+      //$import = $this->getService('cerad_game__schedule_load');
+      //$import->process($games);
         
         $arbiterImport = $this->getService('cerad_game__convert__yaml_to_arbiter_import');
         $arbiterImport->save('data/' . $base . '.csv',$games);
