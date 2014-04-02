@@ -42,6 +42,9 @@ class ConvertPssToYamlCommand extends ContainerAwareCommand
         $arbiterImport = $this->getService('cerad_game__convert__yaml_to_arbiter_import');
         $arbiterImport->save('data/' . $base . '.csv',$games);
         
+        $teams = $this->getService('cerad_game__convert__yaml_to_teams');
+        $teams->save('data/' . 'OpenCupTeams' . '.csv',$games);
+        
         return; if($input); if($output);
     }
 }
