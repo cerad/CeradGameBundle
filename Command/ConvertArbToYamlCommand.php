@@ -26,7 +26,8 @@ class ConvertArbToYamlCommand extends ContainerAwareCommand
     {
       //$shared = '$GD\\arbiter\\Classic\\';
         
-        $base = 'Classic20140401ArbiterSchedule';
+      //$base = 'Classic20140401ArbiterSchedule';
+        $base = 'OpenCupArbiter20140404';
         
         $convert = $this->getService('cerad_game__convert__arb_to_yaml');
         
@@ -37,10 +38,10 @@ class ConvertArbToYamlCommand extends ContainerAwareCommand
         file_put_contents('data/' . $base . '.yml',Yaml::dump($games,10));
 
         $teams = array(
-            'Adolfo Aguilar'  => array('ROCKET CITY UNITED DEVELOPMENT ACADEMY RCUDA-EAST'),
+          //'Adolfo Aguilar'  => array('ROCKET CITY UNITED DEVELOPMENT ACADEMY RCUDA-EAST'),
         );
         $officials = $this->getService('cerad_game__convert__yaml_to_officials');
-        $officials->save('data/Classic20140101Officials.csv',$games,$teams);
+        $officials->save('data/' . $base . 'Ass.csv',$games,$teams);
         
         return; if($input); if($output);
     }
