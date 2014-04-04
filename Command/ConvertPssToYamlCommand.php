@@ -24,7 +24,7 @@ class ConvertPssToYamlCommand extends ContainerAwareCommand
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $base = 'OpenCupPss20140401';
+        $base = 'OpenCupPss20140404';
       //$shared = 'C:\\Users\\ahundiak\\Google Drive\\arbiter\\OpenCup\\';
         $shared = 'data/';
         
