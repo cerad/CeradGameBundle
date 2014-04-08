@@ -11,7 +11,10 @@ class ConvertYamlToOfficials
         $referee = $assignment['referee'];
         $pos     = $assignment['pos'];
         $game    = $assignment['game'];
-                
+     
+      //echo sprintf("Slot %s %s %s\n",$referee,$pos,$game['num']);
+      //print_r($assignment); die();
+        
         if (!$referee) return;
         
         if ($this->refereeCurrent != $referee)
@@ -88,12 +91,23 @@ class ConvertYamlToOfficials
         
         foreach($this->referees as $assignments)
         {
+            usort($assignments,array($this,'sortAssignments'));
             foreach($assignments as $assignment)
             {
                 $this->writeAssignment($file,$assignment);
             }
         }
         fclose($file);
+    }
+    public function sortAssignments($ass1,$ass2)
+    {
+        $dt1 = $ass1['game']['dtBeg'];
+        $dt2 = $ass2['game']['dtBeg'];
+        if ($dt1 < $dt2) return -1;
+        if ($dt1 > $dt2) return  1;
+        
+        return strcmp($ass1['pos'],$ass2['pos']);
+        
     }
     public function getRefereeForTeam($team)
     {

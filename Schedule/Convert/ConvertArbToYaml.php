@@ -32,7 +32,7 @@ class ConvertArbToYaml extends BaseLoader
         $game = array();
         $game['num'] = $num;
         $game['type'] = 'Game';
-        
+//echo sprintf("Game %d %s %s\n",$game['num'],$item['date'],$item['time']);        
         $date = new \DateTime($item['date'] . ' ' . $item['time']);
         
         $game['dtBeg'] = $date->format('Y-m-d H:i:s');
