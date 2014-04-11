@@ -30,6 +30,7 @@ class ConvertYamlToOfficials
             $pos,
             $game['num'],
             $dt->format('n/j/Y'),
+            '',
             $dt->format('D'),
             $dt->format('g:i A'),
             $game['sportKey'],
@@ -62,7 +63,7 @@ class ConvertYamlToOfficials
         $file = fopen($fileName,'wt');
         
         $headers = array('Referee','Pos',
-            'Game','Date','DOW','Time', 'Sport','Level','Blah','Blah',
+            'Game','Date','Blah','DOW','Time', 'Sport','Level','Blah','Blah',
             'Site','Home-Team', 'Away-Team'
         );
         fputcsv($file,$headers);

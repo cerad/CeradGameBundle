@@ -116,6 +116,9 @@ services:
     cerad_game__convert__yaml_to_teams:
         class: Cerad\Bundle\GameBundle\Schedule\Convert\ConvertYamlToTeams
         
+    cerad_game__compare__games:
+        class: Cerad\Bundle\GameBundle\Schedule\Convert\CompareGames
+        
     cerad_game__schedule_load:
         class: Cerad\Bundle\GameBundle\Schedule\Load\LoadGames
         arguments: 

@@ -168,6 +168,7 @@ class ConvertPssToYaml extends BaseLoader
         'Point Mallard #4'        => 'PM04',
         'Point Mallard #5  (8v8)' => 'PM05',
         'Point Mallard #6  (6v6)' => 'PM06',
+        'Point Mallard - Haley Field 8v8' => 'PM07',
         'WM #1'                   => 'WM01',
         'WM #2 (8v8)'             => 'WM02',
     );

@@ -24,11 +24,14 @@ class ConvertArbToYamlCommand extends ContainerAwareCommand
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $src = "C:\\Users\\ahundiak.IGSLAN\\Google Drive\\arbiter\\";
-        $des = "C:\\Users\\ahundiak.IGSLAN\\Google Drive\\arbiter\\";
+      //$src = "C:\\Users\\ahundiak.IGSLAN\\Google Drive\\arbiter\\";
+      //$des = "C:\\Users\\ahundiak.IGSLAN\\Google Drive\\arbiter\\";
+        
+        $src = "C:\\Users\\ahundiak\\Google Drive\\arbiter\\";
+        $des = "C:\\Users\\ahundiak\\Google Drive\\arbiter\\";
         
       //$file = 'Classic\ClassicArbiter20140406';
-        $file = 'OpenCup\OpenCupArbiter20140406';
+        $file = 'OpenCup\OpenCupArbiter20140411';
         
         $convert = $this->getService('cerad_game__convert__arb_to_yaml');
         
@@ -36,16 +39,16 @@ class ConvertArbToYamlCommand extends ContainerAwareCommand
         
         echo sprintf("Games: %d\n",count($games));
         
-        file_put_contents($des . $file . 'Yml.yml',Yaml::dump($games,10));
+      //file_put_contents($des . $file . 'Yml.yml',Yaml::dump($games,10));
 
-        $teams = array(
+        $teamsx = array(
           //'Adolfo Aguilar'  => array('ROCKET CITY UNITED DEVELOPMENT ACADEMY RCUDA-EAST'),
         );
         $officials = $this->getService('cerad_game__convert__yaml_to_officials');
-        $officials->save($des . $file . 'ByRef.csv',$games,$teams);
+        $officials->save($des . $file . 'ByRef.csv',$games,$teamsx);
         
         $teams = $this->getService('cerad_game__convert__yaml_to_teams');
-        $teams->save($des . $file . 'Teams.csv',$games,$teams);
+      //$teams->save($des . $file . 'Teams.csv',$games,$teams);
         
         return; if($input); if($output);
     }
