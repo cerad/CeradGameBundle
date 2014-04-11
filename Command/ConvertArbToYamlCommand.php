@@ -31,7 +31,7 @@ class ConvertArbToYamlCommand extends ContainerAwareCommand
         $des = "C:\\Users\\ahundiak\\Google Drive\\arbiter\\";
         
       //$file = 'Classic\ClassicArbiter20140406';
-        $file = 'OpenCup\OpenCupArbiter20140411';
+        $file = 'OpenCup\OpenCupArbiter20140411a';
         
         $convert = $this->getService('cerad_game__convert__arb_to_yaml');
         
@@ -47,7 +47,7 @@ class ConvertArbToYamlCommand extends ContainerAwareCommand
         $officials = $this->getService('cerad_game__convert__yaml_to_officials');
         $officials->save($des . $file . 'ByRef.csv',$games,$teamsx);
         
-        $teams = $this->getService('cerad_game__convert__yaml_to_teams');
+      //$teams = $this->getService('cerad_game__convert__yaml_to_teams');
       //$teams->save($des . $file . 'Teams.csv',$games,$teams);
         
         return; if($input); if($output);

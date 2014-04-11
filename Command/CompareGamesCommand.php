@@ -31,8 +31,8 @@ class CompareGamesCommand extends ContainerAwareCommand
         $des = "C:\\Users\\ahundiak\\Google Drive\\arbiter\\";
         
       //$file = 'Classic\ClassicArbiter20140406';
-        $arbFile = 'OpenCup\OpenCupArbiter20140410x.xls';
-        $pssFile = 'OpenCup\OpenCupPss20140410.xlsx';
+        $arbFile = 'OpenCup\OpenCupArbiter20140411a.xls';
+        $pssFile = 'OpenCup\OpenCupPss20140411a.xlsx';
         
         $arbLoad = $this->getService('cerad_game__convert__arb_to_yaml');
         $pssLoad = $this->getService('cerad_game__convert__pss_to_yaml');
