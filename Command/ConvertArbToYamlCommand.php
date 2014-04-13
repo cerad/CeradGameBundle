@@ -31,7 +31,7 @@ class ConvertArbToYamlCommand extends ContainerAwareCommand
         $des = "C:\\Users\\ahundiak\\Google Drive\\arbiter\\";
         
       //$file = 'Classic\ClassicArbiter20140406';
-        $file = 'OpenCup\OpenCupArbiter20140411a';
+        $file = 'OpenCup\sunday\ScheduleByTime';
         
         $convert = $this->getService('cerad_game__convert__arb_to_yaml');
         
