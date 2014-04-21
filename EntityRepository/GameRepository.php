@@ -21,6 +21,7 @@ class GameRepository extends EntityRepository
     public function queryGameSchedule($criteria)
     {
         $nums        = $this->getArrayValue($criteria,'nums');
+        $dates       = $this->getArrayValue($criteria,'dates');
         $levelKeys   = $this->getArrayValue($criteria,'levelKeys');
         $projectKeys = $this->getArrayValue($criteria,'projectKeys');
         
@@ -66,6 +67,11 @@ class GameRepository extends EntityRepository
         {
             $qb->andWhere('game.projectKey IN (:projectKeys)');
             $qb->setParameter('projectKeys',$projectKeys);
+        }
+        if ($dates)
+        {
+            $qb->andWhere('DATE(game.dtBeg) IN (:dates)');
+            $qb->setParameter('dates',$dates);
         }
         if ($fieldNames)
         {
