@@ -1,0 +1,68 @@
+parameters:
+  
+services:
+    # ====================================================
+    # Assign game official by user
+    cerad_game__project__game_official__assign_by_assignee__workflow:
+        class: 'Cerad\Bundle\GameBundle\Action\Project\GameOfficials\Assign\AssignByAssigneeWorkflow'
+        arguments:
+            - '%cerad_game__game_official__assign__workflow__file%'
+        calls:
+             - [setDispatcher,['@event_dispatcher']]
+             
+    cerad_game__project__game_official__assign_by_user__model_factory:
+        class: Cerad\Bundle\GameBundle\Action\Project\GameOfficial\AssignByUser\AssignByUserModel
+        calls:
+             - [setDispatcher,['@event_dispatcher']]
+        arguments:
+            - '@cerad_game__project__game_official__assign_by_assignee__workflow'
+            - '@cerad_game__game_repository'
+            
+    cerad_game__project__game_official__assign_by_user__form_factory:
+        class: Cerad\Bundle\GameBundle\Action\Project\GameOfficial\AssignByUser\AssignByUserFormFactory
+        calls:
+             - [setRouter,      ['@router']]
+             - [setFormFactory, ['@form.factory']]
+             
+    cerad_game__project__game_official__assign_by_user__controller:
+        class: Cerad\Bundle\GameBundle\Action\Project\GameOfficial\AssignByUser\AssignByUserController
+        calls:
+             - [setRouter,     ['@router']]
+             - [setTemplating, ['@templating']]
+            
+    # ====================================================
+    # Assign game officials by assignor
+    cerad_game__project__game_officials__assign_by_assignor__model_factory:
+        class: Cerad\Bundle\GameBundle\Action\Project\GameOfficials\AssignByAssignor\AssignByAssignorModel
+        calls:
+             - [setDispatcher,['@event_dispatcher']]
+        arguments:
+            - '@cerad_game__project__game_official__assign_by_assignor__workflow'
+            - '@cerad_game__game_repository'
+                        
+    cerad_game__project__game_officials__assign_by_assignor__form_factory:
+        class: Cerad\Bundle\GameBundle\Action\Project\GameOfficials\AssignByAssignor\AssignByAssignorFormFactory
+        calls:
+             - [setRouter,      ['@router']]
+             - [setFormFactory, ['@form.factory']]
+            
+    cerad_game__project__game_officials__assign_by_assignor__controller:
+        class: Cerad\Bundle\GameBundle\Action\Project\GameOfficials\AssignByAssignor\AssignByAssignorController
+        calls:
+             - [setRouter,     ['@router']]
+             - [setTemplating, ['@templating']]
+    
+    # View not implemented         
+    cerad_game__project__game_officials__assign_by_assignor__view_factory:
+        class: Cerad\Bundle\GameBundle\Action\Project\GameOfficials\AssignByAssignor\AssignByAssignorView
+        calls:
+             - [setRouter,     ['@router']]
+             - [setTemplating, ['@templating']]
+            
+    cerad_game__project__game_official__assign_by_assignor__workflow:
+        class: 'Cerad\Bundle\GameBundle\Action\Project\GameOfficials\Assign\AssignByAssignorWorkflow'
+        arguments:
+            - '%cerad_game__game_official__assign__workflow__file%'
+        calls:
+             - [setDispatcher,['@event_dispatcher']]
+ 

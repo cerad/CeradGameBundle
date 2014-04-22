@@ -1,3 +1,10 @@
+parameters:
+    cerad_game__game_official__assign_slot__workflow__class:
+        Cerad\Bundle\GameBundle\Service\GameOfficial\AssignSlot\AssignSlotWorkflow
+        
+    cerad_game__game_event_listener__class:
+        Cerad\Bundle\GameBundle\EventListener\GameEventListener
+
 services:
 
 # =============================================================
@@ -47,6 +54,15 @@ services:
         
     cerad_game__game_repository:
         alias: cerad_game.game_repository.doctrine
+        
+    cerad_game__game_event_listener:
+        class: '%cerad_game__game_event_listener__class%'
+        calls:
+             - [setContainer, ['@service_container']]
+        tags:
+            - { name: kernel.event_subscriber }
+        arguments:
+            - 'cerad_game__game_repository'
 
 # ============================================
 # Misc

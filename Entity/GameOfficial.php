@@ -73,9 +73,35 @@ class GameOfficial
     /* ===================================================
      * Are users allowed to self assign?
      */
-    public function isUserAssignable()
+    public function isAssignableByUser()
     {
         return strpos($this->assignRole,'ROLE_USER') !== false ? true : false;
+    }
+    /* ===================================================
+     * This works but it really should be done by the entity manager?
+     */
+    public function restore($clone)
+    {
+        die('gameOfficial restore');
+        $this->assignState    = $clone->getAssignState();
+        $this->personGuid     = $clone->getPersonGuid();
+        $this->personEmail    = $clone->getPersonEmail();
+        $this->personNameFull = $clone->getPersonNameFull();
+    }
+    // Copies or clears person info
+    public function setPersonFromPlan($personPlan)
+    {
+        if (!$personPlan)
+        {
+            $this->setPersonGuid    (null);
+            $this->setPersonEmail   (null);
+            $this->setPersonNameFull(null);
+            return;
+        }
+        $person = $personPlan->getPerson();
+        $this->setPersonGuid    ($person->getGuid());
+        $this->setPersonEmail   ($person->getEmail());
+        $this->setPersonNameFull($personPlan->getPersonName());
     }
     /* =========================================
      * Used to highlite objects
